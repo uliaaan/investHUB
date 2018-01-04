@@ -13,7 +13,11 @@
 		</div>
 		<div class="form-group">
 			<label for="buy_price">Buy price</label>
-			<textarea class="form-control" name="buy_price" required>{{case.buy_price}}</textarea>
+			<input type="text" class="form-control" name="buy_price" value="{{case.buy_price}}" required>
+		</div>
+		<div class="form-group">
+			<label for="coins_count">Coins count</label>
+			<input type="text" class="form-control" name="coins_count" value="{{case.coins_count}}" required>
 		</div>
 		<button type="submit" class="btn btn-primary">Submit</button>
 	</form>

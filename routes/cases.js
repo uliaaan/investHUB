@@ -26,8 +26,14 @@ router.get('/', /* ensureAuthenticated  ,*/ (req, res) => {
 						for (let j = 0; j < Coin.length; j++ ) {
 							if(cases[i].symbol == Coin[j].symbol) {
 								data = {}
+								//Price now
+								nowPrice = cases[i].coins_count * Coin[j].price_usd
+
+								//Price buy
+								buyPrice = cases[i].coins_count * cases[i].buy_price
+
 								//Profit money
-								profitMoney = (Coin[j].price_usd - cases[i].buy_price).toFixed(2)
+								profitMoney = (nowPrice - buyPrice).toFixed(2)
 							
 								//Percent profit
 								percent = (((Coin[j].price_usd * 100) / cases[i].buy_price) - 100).toFixed(2)
@@ -38,6 +44,7 @@ router.get('/', /* ensureAuthenticated  ,*/ (req, res) => {
 								data.name = cases[i].symbol
 								data.buyPrice = cases[i].buy_price
 								data.nowPrice = Coin[j].price_usd
+								data.coinCount = cases[i].coins_count
 								data.profitMoney = profitMoney
 								data.percent = percent
 
@@ -86,16 +93,21 @@ router.post('/', ensureAuthenticated, (req, res) => {
 	if (!req.body.buy_price){
 		errors.push({text:'Please add buy price'})
 	}
+	if (!req.body.coins_count){
+		errors.push({text:'Please add coin count'})
+	}
 	if (errors.length > 0) {
 		res.render('cases/add', {
 			errors: errors,
 			symbol: req.body.symbol,
-			buy_price: req.body.buy_price
+			buy_price: req.body.buy_price,
+			coins_count: req.body.coins_count
 		})
 	} else {
 		const newUser = {
 			symbol: req.body.symbol,
 			buy_price: req.body.buy_price,
+			coins_count: req.body.coins_count,
 			user: req.user.id
 		}
 		new Case(newUser)
@@ -116,6 +128,7 @@ router.put('/:id', ensureAuthenticated, (req, res) => {
 		//new valus
 		cases.symbol = req.body.symbol
 		cases.buy_price = req.body.buy_price
+		cases.coins_count = req.body.coins_count
 		cases.save()
 			.then(cases => {
 				req.flash('success_msg', 'Coin updated')

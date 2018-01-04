@@ -11,6 +11,10 @@ const CaseSchema = new Schema({
 		type: String,
 		required: true
 	},
+	coins_count: {
+		type: String,
+		required: true
+	},
 	user: {
 		type: String,
 		required: true
