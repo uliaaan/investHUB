@@ -7,6 +7,7 @@ const session = require('express-session')
 const bodyParser = require('body-parser')
 const passport = require('passport')
 const mongoose = require('mongoose')
+const request = require('request')
 
 const app = express()
 
@@ -17,8 +18,6 @@ const users = require('./routes/users')
 //Pasport config
 require('./config/passport')(passport)
 
-//Map global promise
-//mongoose.Promise = global.Promise
 //Connect to mongoose
 mongoose.connect('mongodb://localhost/investinfo')
 	.then(() => console.log('MongoDB connected...'))
@@ -65,7 +64,7 @@ app.use(function(req, res, next) {
 
 //Route
 app.get('', (req, res) => {
-	const title = 'Welcome1'
+	const title = 'Welcome'
 	res.render('index', {
 		title: title
 	})
@@ -79,6 +78,25 @@ app.get('/about', (req, res) => {
 //Use routes
 app.use('/ideas', ideas)
 app.use('/users', users)
+
+//Load Idea Model
+require('./models/Coinmarketcup')
+const Coin = mongoose.model('coins')
+
+const url = 'https://api.coinmarketcap.com/v1/ticker/?limit=10'
+
+
+//Get data from coinmarketcup to monog
+/*  request({
+	url: url,
+	json: true
+}, function (error, response, body) {
+		//Drop coins data
+		Coin.collection.drop()
+
+		//Add coins data
+		Coin.create(body)
+}) */ 
 
 const port = 5000
 

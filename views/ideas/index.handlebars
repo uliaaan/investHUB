@@ -1,7 +1,11 @@
-{{#each ideas}}
+{{#each dataCurrency}}
 	<div class="card card-body mb-2">
-		<h4>{{title}}</h4>
-		<p>{{details}}</p>
+		<h4>{{name}}</h4>
+		<p>{{profitMoney}}</p>	
+		<p>{{percent}}</p>	
+{{!-- 			{{#each ../arr}}
+				<b>{{this}}</b>
+			{{/each}} --}}
 		<a class="btn btn-dark btn-block mb-2" href="/ideas/edit/{{id}}">Edit</a>
 		<form method="post" action="/ideas/{{id}}?_method=DELETE">
 			<!-- <input type="hidden" name="_method" value="DELETE"> -->

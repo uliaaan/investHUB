@@ -3,17 +3,52 @@ const mongoose = require('mongoose')
 const router = experss.Router()
 const {ensureAuthenticated} = require('../helpers/auth')
 
-//Load Idea Model
+//Load Idea, Coin Model
 require('../models/idea')
 const Idea = mongoose.model('ideas')
 
+require('../models/Coinmarketcup')
+const Coin = mongoose.model('coins')
+
 //Idea index page
-router.get('/', ensureAuthenticated, (req, res) => {
-	Idea.find({user: req.user.id})
+router.get('/', /* ensureAuthenticated  ,*/ (req, res) => {
+	Idea.find({/* user: req.user.id */ })
 		.sort({date:'desc'})
 		.then(ideas => {
-			res.render('ideas/index', {
-				ideas:ideas
+
+			//MainArr with data currencys
+			let dataCurrency = []
+
+			Coin.find(function (err, Coin) {
+				if (err) return console.error(err)
+					
+					//Loop for search in 2 Obj
+					for (let i = 0; i < ideas.length; i++) {
+						for (let j = 0; j < Coin.length; j++ ) {
+							if(ideas[i].title === Coin[j].symbol) {
+								data = {}
+								//Profit money
+								profitMoney = (Coin[j].price_usd - ideas[i].details).toFixed(2)
+								
+								//Percent profit
+								percent = (((Coin[j].price_usd * 100) / ideas[i].details) - 100).toFixed(2)
+							
+								//Add to Obj
+								data.id = ideas[i]._id
+								data.name = ideas[i].title
+								data.profitMoney = profitMoney
+								data.percent = percent
+
+								//Push to MainArr data
+								dataCurrency.push(data)
+							}
+						}
+					}
+				
+				console.log(dataCurrency)
+				res.render('ideas/index', {
+					dataCurrency: dataCurrency
+				}) 
 			})
 		})
 })
