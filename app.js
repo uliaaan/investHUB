@@ -12,7 +12,7 @@ const request = require('request')
 const app = express()
 
 //Load routes
-const ideas = require('./routes/ideas')
+const cases = require('./routes/cases')
 const users = require('./routes/users')
 
 //Pasport config
@@ -76,10 +76,10 @@ app.get('/about', (req, res) => {
 })
 
 //Use routes
-app.use('/ideas', ideas)
+app.use('/cases', cases)
 app.use('/users', users)
 
-//Load Idea Model
+//Load coins Model
 require('./models/Coinmarketcup')
 const Coin = mongoose.model('coins')
 

@@ -2,12 +2,12 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 //Create Schema
-const IdeaSchema = new Schema({
-	title: {
+const CaseSchema = new Schema({
+	symbol: {
 		type: String,
 		required: true
 	},
-	details: {
+	buy_price: {
 		type: String,
 		required: true
 	},
@@ -21,4 +21,4 @@ const IdeaSchema = new Schema({
 	}
 })
 
-mongoose.model('ideas', IdeaSchema)
+mongoose.model('cases', CaseSchema)

@@ -1,0 +1,56 @@
+{{!-- {{#each dataCurrency}}
+	<div class="card card-body mb-2">
+		<h4>{{name}}</h4>
+		<p>{{profitMoney}}</p>	
+		<p>{{percent}}</p>	
+			{{#each ../arr}}
+				<b>{{this}}</b>
+			{{/each}} 
+		<a class="btn btn-dark btn-block mb-2" href="/ideas/edit/{{id}}">Edit</a>
+		<form method="post" action="/ideas/{{id}}?_method=DELETE">
+			<!-- <input type="hidden" name="_method" value="DELETE"> -->
+			<input type="submit" class="btn btn-danger btn-block" value="Delete">
+		</form>
+	</div>
+{{else}}
+	<p>No videos</p>
+{{/each}} --}}
+
+{{#if dataCurrency}}
+<table class="table table-bordered table-sm">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Symbol</th>
+			<th>Buy price</th>
+			<th>Now price</th>
+			<th>Coins count</th>
+			<th>Money profit</th>
+			<th>Percent profit</th>
+			<th>Edit</th>
+			<th>Delte</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#each dataCurrency}}
+			<tr>
+				<td>{{number}}</td>
+				<td>{{name}}</td>
+				<td>{{buyPrice}}$</td>
+				<td>{{nowPrice}}$</td>
+				<td></td>
+				<td>{{profitMoney}}$</td>
+				<td>{{percent}}%</td>
+				<td><a class="btn btn-dark" href="/cases/edit/{{id}}">Edit</a></td>
+				<td>
+					<form method="post" action="/cases/{{id}}?_method=DELETE">
+						<input type="submit" class="btn btn-danger" value="Delete">
+					</form>
+				</td>
+			</tr>
+		{{/each}}
+	</tbody>
+</table>
+{{else}}
+	<p>No coins</p>
+{{/if}}
