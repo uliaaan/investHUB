@@ -1,6 +1,7 @@
 ☐ Auto-substitution price from mongoose to input in "Add currency"
 ✔ Change "Idea" titles to "Currency" @done(18-01-05 08:31)
-☐ Setinterval 5 minuts
+✔ Setinterval 5 minuts @done(18-01-05 09:57)
+✔ Sum percent and profit and input money @done(18-01-05 13:12)
 ☐ Add inputs: Count coins(!), Date, Input money, Exchange
 ☐ Data for telegram
 ☐ Telegram bot

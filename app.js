@@ -87,16 +87,19 @@ const url = 'https://api.coinmarketcap.com/v1/ticker/?limit=10'
 
 
 //Get data from coinmarketcup to monog
-/*  request({
-	url: url,
-	json: true
-}, function (error, response, body) {
-		//Drop coins data
-		Coin.collection.drop()
-
-		//Add coins data
-		Coin.create(body)
-}) */ 
+setInterval(function() {
+	request({
+		url: url,
+		json: true
+	}, function (error, response, body) {
+			//Drop coins data
+			Coin.collection.drop()
+	
+			//Add coins data
+			Coin.create(body)
+	})
+	console.log('Update base')
+}, 300000)
 
 const port = 5000
 

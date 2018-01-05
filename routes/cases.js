@@ -18,7 +18,9 @@ router.get('/', /* ensureAuthenticated  ,*/ (req, res) => {
 
 			//MainArr with data currencys
 			let dataCurrency = []
-
+			let profitMoneyRes = 0
+			let profitPercentRes = 0
+			let inputMoneyRes = 0
 			Coin.find(function (err, Coin) {
 				if (err) return console.error(err)
 					//Loop for search in 2 Obj
@@ -31,12 +33,13 @@ router.get('/', /* ensureAuthenticated  ,*/ (req, res) => {
 
 								//Price buy
 								buyPrice = cases[i].coins_count * cases[i].buy_price
-
+								inputMoneyRes += Number(buyPrice)
 								//Profit money
 								profitMoney = (nowPrice - buyPrice).toFixed(2)
-							
+								profitMoneyRes += Number(profitMoney)
 								//Percent profit
 								percent = (((Coin[j].price_usd * 100) / cases[i].buy_price) - 100).toFixed(2)
+								profitPercentRes += Number(percent)
 							
 								//Add to Obj
 								data.id = cases[i]._id
@@ -54,9 +57,12 @@ router.get('/', /* ensureAuthenticated  ,*/ (req, res) => {
 						}
 					}
 				
-				//console.log(dataCurrency)
+				//console.log(profitRes)
 				res.render('cases/index', {
-					dataCurrency: dataCurrency
+					dataCurrency: dataCurrency,
+					profitMoneyRes: profitMoneyRes,
+					profitPercentRes: profitPercentRes.toFixed(2),
+					inputMoneyRes: inputMoneyRes.toFixed(2)
 				}) 
 			})
 		})
