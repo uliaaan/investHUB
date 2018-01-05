@@ -1,57 +1,121 @@
-{{!-- {{#each dataCurrency}}
-	<div class="card card-body mb-2">
-		<h4>{{name}}</h4>
-		<p>{{profitMoney}}</p>	
-		<p>{{percent}}</p>	
-			{{#each ../arr}}
-				<b>{{this}}</b>
-			{{/each}} 
-		<a class="btn btn-dark btn-block mb-2" href="/ideas/edit/{{id}}">Edit</a>
-		<form method="post" action="/ideas/{{id}}?_method=DELETE">
-			<!-- <input type="hidden" name="_method" value="DELETE"> -->
-			<input type="submit" class="btn btn-danger btn-block" value="Delete">
-		</form>
-	</div>
-{{else}}
-	<p>No videos</p>
-{{/each}} --}}
-
 {{#if dataCurrency}}
-	<h5><b>Input money:</b> {{inputMoneyRes}}$ / <b>Profit money:</b> {{profitMoneyRes}}$ / <b>Profit percenet:</b> {{profitPercentRes}}%</h5>
-<table class="table table-bordered table-sm">
-	<thead>
-		<tr>
-			<th>#</th>
-			<th>Symbol</th>
-			<th>Buy price</th>
-			<th>Now price</th>
-			<th>Coins count</th>
-			<th>Money profit</th>
-			<th>Percent profit</th>
-			<th>Edit</th>
-			<th>Delete</th>
-		</tr>
-	</thead>
-	<tbody>
-		{{#each dataCurrency}}
-			<tr>
-				<td>{{number}}</td>
-				<td>{{name}}</td>
-				<td>{{buyPrice}}$</td>
-				<td>{{nowPrice}}$</td>
-				<td>{{coinCount}}</td>
-				<td>{{profitMoney}}$</td>
-				<td>{{percent}}%</td>
-				<td><a class="btn btn-dark" href="/cases/edit/{{id}}">Edit</a></td>
-				<td>
-					<form method="post" action="/cases/{{id}}?_method=DELETE">
-						<input type="submit" class="btn btn-danger" value="Delete">
-					</form>
-				</td>
-			</tr>
-		{{/each}}
-	</tbody>
-</table>
+<div class="row">
+	<div class="col-xl-3 col-md-6">
+		<div class="card card-stats">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-5">
+						<div class="icon-big text-center">
+							<div class="icon-warning">
+								<img src="/img/input.svg" alt="">
+							</div>
+						</div>
+					</div>
+					<div class="col-7">
+						<div class="numbers">
+							<div>
+								<p class="card-category">Input money</p>
+								<h4 class="card-title">{{inputMoneyRes}}$</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-xl-3 col-md-6">
+		<div class="card card-stats">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-5">
+						<div class="icon-big text-center">
+							<div class="icon-warning">
+								<img src="/img/money.svg" alt="">
+							</div>
+						</div>
+					</div>
+					<div class="col-7">
+						<div class="numbers">
+							<div>
+								<p class="card-category">Profit money</p>
+								<h4 class="card-title">{{profitMoneyRes}}$</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-xl-3 col-md-6">
+		<div class="card card-stats">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-5">
+						<div class="icon-big text-center">
+							<div class="icon-warning">
+								<img src="/img/percent.svg" alt="">
+							</div>
+						</div>
+					</div>
+					<div class="col-7">
+						<div class="numbers">
+							<div>
+								<p class="card-category">Profit percenet</p>
+								<h4 class="card-title">{{profitPercentRes}}%</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="content">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="content table-full-width table-responsive">
+					<table class="table table-striped table-hover">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Symbol</th>
+								<th>Buy price</th>
+								<th>Now price</th>
+								<th>Coins count</th>
+								<th>Money profit</th>
+								<th>Percent profit</th>
+								<th>Edit</th>
+								<th>Delete</th>
+							</tr>
+						</thead>
+						<tbody>
+							{{#each dataCurrency}}
+							<tr>
+								<td>{{number}}</td>
+								<td>{{name}}</td>
+								<td>{{buyPrice}}$</td>
+								<td>{{nowPrice}}$</td>
+								<td>{{coinCount}}</td>
+								<td>{{profitMoney}}$</td>
+								<td>{{percent}}%</td>
+								<td>
+									<a class="btn btn-dark btn-sm" href="/cases/edit/{{id}}">Edit</a>
+								</td>
+								<td>
+									<form method="post" action="/cases/{{id}}?_method=DELETE">
+										<input type="submit" class="btn btn-danger btn-sm" value="Delete">
+									</form>
+								</td>
+							</tr>
+							{{/each}}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 {{else}}
-	<p>No coins</p>
+<p>No coins</p>
 {{/if}}

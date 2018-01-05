@@ -1,0 +1,45 @@
+body {
+  background-color: #f4f3ef;
+}
+
+.table>thead>tr>th {
+  border-bottom-width: 1px;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #9a9a9a;
+  font-weight: 400;
+  padding-bottom: 5px;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+  padding: 12px 8px;
+  vertical-align: middle;
+}
+
+.table>tbody>tr>td {
+  font-size: 14px;
+}
+
+.card {
+  border-radius: 6px;
+  box-shadow: 0 2px 2px rgba(204, 197, 185, 0.5);
+  background-color: #FFFFFF;
+  color: #252422;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.card .numbers {
+  font-size: 2em;
+  text-align: right;
+}
+
+.card .numbers p {
+  margin: 0;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.4em;
+}

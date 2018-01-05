@@ -18,6 +18,17 @@ router.get('/register', (req, res) => {
 	res.render('users/register')
 })
 
+//User settings route
+router.get('/settings', (req, res) => {
+	res.render('users/settings')
+})
+
+//User settings route
+router.get('/', (req, res) => {
+	res.render('users/index')
+})
+
+
 //Login Form POST
 router.post('/login', (req, res, next) => {
 	passport.authenticate('local', {

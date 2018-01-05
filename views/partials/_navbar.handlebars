@@ -22,8 +22,13 @@
 							<a href="/cases/add" class="dropdown-item">Add coin</a>
 						</div>
 					</li>
-					<li class="nav-item">
-						<a href="/users/logout" class="nav-link">Logout</a>
+					<li class="nav-item dropdown">
+						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink">Profile</a>
+						<div class="dropdown-menu">
+							<a href="/users" class="dropdown-item">My profile</a>
+							<a href="/users/settings" class="dropdown-item">Settings</a>
+							<a href="/users/logout" class="dropdown-item">Logout</a>
+						</div>
 					</li>
 				{{else}}
 					<li class="nav-item">

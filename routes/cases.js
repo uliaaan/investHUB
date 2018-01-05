@@ -60,7 +60,7 @@ router.get('/', /* ensureAuthenticated  ,*/ (req, res) => {
 				//console.log(profitRes)
 				res.render('cases/index', {
 					dataCurrency: dataCurrency,
-					profitMoneyRes: profitMoneyRes,
+					profitMoneyRes: profitMoneyRes.toFixed(2),
 					profitPercentRes: profitPercentRes.toFixed(2),
 					inputMoneyRes: inputMoneyRes.toFixed(2)
 				}) 
