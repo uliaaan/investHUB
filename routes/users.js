@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
 const router = experss.Router()
+const {ensureAuthenticated} = require('../helpers/auth')
 
 //Loa user Model
 require('../models/User')
@@ -18,16 +19,34 @@ router.get('/register', (req, res) => {
 	res.render('users/register')
 })
 
-//User settings route
-router.get('/settings', (req, res) => {
-	res.render('users/settings')
+// Users Index Page
+router.get('/', ensureAuthenticated, (req, res) => {
+  User.find()
+    .then(users => {
+      res.render('users/index', {
+        users:users
+      })
+    })
 })
 
-//User settings route
-router.get('/', (req, res) => {
-	res.render('users/index')
-})
 
+//Edit case form
+router.get('/edit/:id', ensureAuthenticated, (req, res) => {
+	User.findOne({
+		_id: req.params.id
+	})
+		.then(user => {
+			console.log(user)
+			if(user._id != req.user.id){
+				req.flash('error_msg', 'Not Authorized')
+				res.redirect('/users')
+			} else {
+				res.render('users/edit', {
+					user:user
+				})
+			}
+		})
+})
 
 //Login Form POST
 router.post('/login', (req, res, next) => {
@@ -37,7 +56,6 @@ router.post('/login', (req, res, next) => {
 		failureFlash: true
 	})(req, res, next)
 })
-
 
 //Registr form POST
 router.post('/register', (req, res) => {

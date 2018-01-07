@@ -2,6 +2,7 @@ const experss = require('express')
 const mongoose = require('mongoose')
 const router = experss.Router()
 const {ensureAuthenticated} = require('../helpers/auth')
+const {conversion} = require('../helpers/conversion')
 
 //Load Case, Coin Model
 require('../models/Case')
@@ -11,60 +12,26 @@ require('../models/Coinmarketcup')
 const Coin = mongoose.model('coins')
 
 //Case index page
-router.get('/', /* ensureAuthenticated  ,*/ (req, res) => {
-	Case.find({/* user: req.user.id */ })
+router.get('/', ensureAuthenticated, (req, res) => {
+	Case.find({ user: req.user.id })
 		.sort({date:'desc'})
 		.then(cases => {
 
-			//MainArr with data currencys
-			let dataCurrency = []
-			let profitMoneyRes = 0
-			let profitPercentRes = 0
-			let inputMoneyRes = 0
-			Coin.find(function (err, Coin) {
-				if (err) return console.error(err)
-					//Loop for search in 2 Obj
-					for (let i = 0; i < cases.length; i++) {
-						for (let j = 0; j < Coin.length; j++ ) {
-							if(cases[i].symbol == Coin[j].symbol) {
-								data = {}
-								//Price now
-								nowPrice = cases[i].coins_count * Coin[j].price_usd
-
-								//Price buy
-								buyPrice = cases[i].coins_count * cases[i].buy_price
-								inputMoneyRes += Number(buyPrice)
-								//Profit money
-								profitMoney = (nowPrice - buyPrice).toFixed(2)
-								profitMoneyRes += Number(profitMoney)
-								//Percent profit
-								percent = (((Coin[j].price_usd * 100) / cases[i].buy_price) - 100).toFixed(2)
-								profitPercentRes += Number(percent)
-							
-								//Add to Obj
-								data.id = cases[i]._id
-								data.number = i + 1
-								data.name = cases[i].symbol
-								data.buyPrice = cases[i].buy_price
-								data.nowPrice = Coin[j].price_usd
-								data.coinCount = cases[i].coins_count
-								data.profitMoney = profitMoney
-								data.percent = percent
-
-								//Push to MainArr data
-								dataCurrency.push(data)
-							}
-						}
-					}
-				
-				//console.log(profitRes)
-				res.render('cases/index', {
-					dataCurrency: dataCurrency,
-					profitMoneyRes: profitMoneyRes.toFixed(2),
-					profitPercentRes: profitPercentRes.toFixed(2),
-					inputMoneyRes: inputMoneyRes.toFixed(2)
-				}) 
-			})
+			//Query to main data
+			(async () => {
+				try {
+					//All coins
+					let coins =  await Coin.find(function (err, Coin) {})
+					//Сonversion data
+					let resultData = await conversion(Case, coins, cases, req)
+					res.render('cases/index', {
+						tableData: resultData[0].dataArr,
+						generalData: resultData[1].dataRes
+					}) 
+				}  catch (e) {
+					console.error(e);
+				}
+			})()
 		})
 })
 

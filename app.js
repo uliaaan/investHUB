@@ -83,11 +83,11 @@ app.use('/users', users)
 require('./models/Coinmarketcup')
 const Coin = mongoose.model('coins')
 
-const url = 'https://api.coinmarketcap.com/v1/ticker/?limit=10'
+const url = 'https://api.coinmarketcap.com/v1/ticker/?limit=1000'
 
 
 //Get data from coinmarketcup to monog
-setInterval(function() {
+/* setInterval(function() {
 	request({
 		url: url,
 		json: true
@@ -100,7 +100,7 @@ setInterval(function() {
 	})
 	console.log('Update base')
 }, 300000)
-
+ */
 const port = 5000
 
 app.listen(port, () => {

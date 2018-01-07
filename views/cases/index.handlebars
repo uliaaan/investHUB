@@ -1,4 +1,4 @@
-{{#if dataCurrency}}
+{{#if tableData}}
 <div class="row">
 	<div class="col-xl-3 col-md-6">
 		<div class="card card-stats">
@@ -15,7 +15,7 @@
 						<div class="numbers">
 							<div>
 								<p class="card-category">Input money</p>
-								<h4 class="card-title">{{inputMoneyRes}}$</h4>
+								<h4 class="card-title">{{generalData.inputMoneyRes}}$</h4>
 							</div>
 						</div>
 					</div>
@@ -37,8 +37,31 @@
 					<div class="col-7">
 						<div class="numbers">
 							<div>
+								<p class="card-category">Balance</p>
+								<h4 class="card-title">{{generalData.balanceRes}}$</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-xl-3 col-md-6">
+		<div class="card card-stats">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-5">
+						<div class="icon-big text-center">
+							<div class="icon-warning">
+								<img src="/img/count.svg" alt="">
+							</div>
+						</div>
+					</div>
+					<div class="col-7">
+						<div class="numbers">
+							<div>
 								<p class="card-category">Profit money</p>
-								<h4 class="card-title">{{profitMoneyRes}}$</h4>
+								<h4 class="card-title">{{generalData.profitMoneyRes}}$</h4>
 							</div>
 						</div>
 					</div>
@@ -61,7 +84,7 @@
 						<div class="numbers">
 							<div>
 								<p class="card-category">Profit percenet</p>
-								<h4 class="card-title">{{profitPercentRes}}%</h4>
+								<h4 class="card-title">{{generalData.profitPercentRes}}%</h4>
 							</div>
 						</div>
 					</div>
@@ -90,7 +113,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							{{#each dataCurrency}}
+							{{#each tableData}}
 							<tr>
 								<td>{{number}}</td>
 								<td>{{name}}</td>

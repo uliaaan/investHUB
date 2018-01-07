@@ -1,1 +1,10 @@
-<h1>Account</h1>
+<h2 class="text-center">Account</h2>
+<div class="row">
+	<div class="col-md-6 mx-auto">
+		<div class="card card-body">
+			<h3 class="text-center font-weight-bold">{{user.name}}</h3>
+			<h5 class="text-center text-uppercase">{{user.email}}</h5>
+      <a class="btn btn-primary btn-sm" href="/users/edit/{{user._id}}">Edit profile</a>
+		</div>
+	</div>
+</div>
