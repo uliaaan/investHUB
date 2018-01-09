@@ -2,12 +2,13 @@
 ✔ Change "Idea" titles to "Currency" @done(18-01-05 08:31)
 ✔ Setinterval 5 minuts @done(18-01-05 09:57)
 ✔ Sum percent and profit and input money @done(18-01-05 13:12)
-☐ Add inputs: Count coins(!), Date, Input money, Exchange
+✔ Add inputs: Count coins(!), Date, Input money, Exchange @done(18-01-10 03:25)
+☐ Edit date and format date
 ✔ Data for telegram @done(18-01-10 01:07)
 ✔ Telegram bot @done(18-01-09 19:37)
 ✔ Connect to telegram bot @done(18-01-09 19:37)
 ☐ Variable notification cron for users
-☐ Allert to delete coin
+✔ Allert to delete coin @done(18-01-10 01:37)
 ☐ If coin didn't registered in base => error
 ☐ Design
 ☐ Domain

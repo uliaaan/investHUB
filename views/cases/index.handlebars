@@ -103,11 +103,13 @@
 							<tr>
 								<th>#</th>
 								<th>Symbol</th>
+								<th>Date buy</th>
 								<th>Buy price</th>
 								<th>Now price</th>
 								<th>Coins count</th>
 								<th>Money profit</th>
 								<th>Percent profit</th>
+								<th>Exchange</th>
 								<th>Edit</th>
 								<th>Delete</th>
 							</tr>
@@ -116,18 +118,20 @@
 							{{#each tableData}}
 							<tr>
 								<td>{{number}}</td>
+								<td>{{dateBuy}}</td>
 								<td>{{name}}</td>
 								<td>{{buyPrice}}$</td>
 								<td>{{nowPrice}}$</td>
 								<td>{{coinCount}}</td>
 								<td>{{profitMoney}}$</td>
 								<td>{{percent}}%</td>
+								<td>{{exchange}}</td>
 								<td>
 									<a class="btn btn-dark btn-sm" href="/cases/edit/{{id}}">Edit</a>
 								</td>
 								<td>
 									<form method="post" action="/cases/{{id}}?_method=DELETE">
-										<input type="submit" class="btn btn-danger btn-sm" value="Delete">
+										<input type="submit" class="btn btn-danger btn-sm" value="Delete" onclick="return confirm('Are you sure to delete this coin?');">
 									</form>
 								</td>
 							</tr>

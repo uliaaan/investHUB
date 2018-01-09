@@ -73,14 +73,18 @@ router.post('/', ensureAuthenticated, (req, res) => {
 		res.render('cases/add', {
 			errors: errors,
 			symbol: req.body.symbol,
+			date_buy: req.body.date_buy,
 			buy_price: req.body.buy_price,
-			coins_count: req.body.coins_count
+			coins_count: req.body.coins_count,
+			exchange: req.body.exchange
 		})
 	} else {
 		const newUser = {
 			symbol: req.body.symbol,
+			date_buy: req.body.date_buy,
 			buy_price: req.body.buy_price,
 			coins_count: req.body.coins_count,
+			exchange: req.body.exchange,
 			user: req.user.id
 		}
 		new Case(newUser)
@@ -100,8 +104,10 @@ router.put('/:id', ensureAuthenticated, (req, res) => {
 	.then(cases => {
 		//new valus
 		cases.symbol = req.body.symbol
+		cases.date_buy = req.body.date_buy
 		cases.buy_price = req.body.buy_price
 		cases.coins_count = req.body.coins_count
+		cases.exchange = req.body.exchange
 		cases.save()
 			.then(cases => {
 				req.flash('success_msg', 'Coin updated')
