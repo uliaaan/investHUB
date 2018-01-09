@@ -5,7 +5,7 @@ const passport = require('passport')
 const router = experss.Router()
 const {ensureAuthenticated} = require('../helpers/auth')
 
-//Loa user Model
+//Load user Model
 require('../models/User')
 const User = mongoose.model('users')
 

@@ -8,6 +8,7 @@ const bodyParser = require('body-parser')
 const passport = require('passport')
 const mongoose = require('mongoose')
 const request = require('request')
+const telegram = require('./telegram')
 
 const app = express()
 
@@ -87,7 +88,7 @@ const url = 'https://api.coinmarketcap.com/v1/ticker/?limit=1000'
 
 
 //Get data from coinmarketcup to monog
-/* setInterval(function() {
+setInterval(function() {
 	request({
 		url: url,
 		json: true
@@ -100,7 +101,7 @@ const url = 'https://api.coinmarketcap.com/v1/ticker/?limit=1000'
 	})
 	console.log('Update base')
 }, 300000)
- */
+
 const port = 5000
 
 app.listen(port, () => {

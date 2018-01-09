@@ -4,8 +4,8 @@
 ✔ Sum percent and profit and input money @done(18-01-05 13:12)
 ☐ Add inputs: Count coins(!), Date, Input money, Exchange
 ☐ Data for telegram
-☐ Telegram bot
-☐ Connect to telegram bot
+✔ Telegram bot @done(18-01-09 19:37)
+✔ Connect to telegram bot @done(18-01-09 19:37)
 ☐ Variable notification cron for users
 ☐ Allert to delete coin
 ☐ If coin didn't registered in base => error
