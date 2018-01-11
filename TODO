@@ -8,10 +8,11 @@
 ✔ Telegram bot @done(18-01-09 19:37)
 ✔ Connect to telegram bot @done(18-01-09 19:37)
 ☐ Variable notification cron for users
-☐ Notification upper cases "Login to telegram bot investhubbot to get notifications about you case"
+✔ Notification upper cases "Login to telegram bot investhubbot to get notifications about you case" @done(18-01-11 21:44)
 ☐ Add /cancel when login telegram bot
 ✔ Allert to delete coin @done(18-01-10 01:37)
 ☐ If coin didn't registered in base => error
 ☐ Design
-☐ Domain
-☐ Deploy
+✔ Statistic @done(18-01-12 02:48)
+✔ Domain @done(18-01-11 21:44)
+✔ Deploy @done(18-01-11 21:44)

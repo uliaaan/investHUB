@@ -13,6 +13,10 @@ const Coin = mongoose.model('coins')
 
 //Case index page
 router.get('/', ensureAuthenticated, (req, res) => {
+	let errors = []
+	if (req.user.telegram == null){
+		errors.push({text:'Connect your Telegram account to get notifications @investhubbot'})
+	}
 	Case.find({ user: req.user.id })
 		.sort({date:'desc'})
 		.then(cases => {
@@ -25,6 +29,7 @@ router.get('/', ensureAuthenticated, (req, res) => {
 					//Сonversion data
 					let resultData = await conversion(Case, coins, cases, req)
 					res.render('cases/index', {
+						errors: errors,
 						tableData: resultData[0].dataArr,
 						generalData: resultData[1].dataRes
 					}) 
