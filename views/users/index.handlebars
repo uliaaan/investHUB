@@ -1,10 +1,17 @@
-<h2 class="text-center">Account</h2>
-<div class="row">
-	<div class="col-md-6 mx-auto">
-		<div class="card card-body">
-			<h3 class="text-center font-weight-bold">{{user.name}}</h3>
-			<h5 class="text-center text-uppercase">{{user.email}}</h5>
-      <a class="btn btn-primary btn-sm" href="/users/edit/{{user._id}}">Edit profile</a>
-		</div>
-	</div>
+<div class="card card-body">
+	<h3>Account</h3>
+	<hr>
+	<h3 class="font-weight-bold">{{user.name}}</h3>
+	<h5 class="text-uppercase">{{user.email}}</h5>
+	
+	<h5 class="text-uppercase"><b>Telegram: </b>
+	{{#if user.telegram}}
+		<span class="text-success">Access</span>
+	{{else}}
+		<span class="text-danger">No access</span><br>
+		<span>Add and login telegram bot: <a href="https://t.me/investhubbot">@investhubbot</a></span>
+	{{/if}}
+	</h5>
 </div>
+
+      {{!-- <a class="btn btn-primary btn-sm" href="/users/edit/{{user._id}}">Edit profile</a> --}}

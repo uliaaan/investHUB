@@ -41,7 +41,7 @@ module.exports = {
             data.coinCount = cases[i].coins_count
             data.profitMoney = profitMoney
             data.percent = percent
-            data.dateBuy = (cases[i].date_buy).toLocaleDateString().replace(/\-/g,'.')
+            data.dateBuy = (cases[i].date_buy).replace(/\-/g,'.')
             data.exchange = cases[i].exchange
 
             //Push to MainArr data

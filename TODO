@@ -3,11 +3,13 @@
 ✔ Setinterval 5 minuts @done(18-01-05 09:57)
 ✔ Sum percent and profit and input money @done(18-01-05 13:12)
 ✔ Add inputs: Count coins(!), Date, Input money, Exchange @done(18-01-10 03:25)
-☐ Edit date and format date
+✔ Edit date and format date @done(18-01-10 17:29)
 ✔ Data for telegram @done(18-01-10 01:07)
 ✔ Telegram bot @done(18-01-09 19:37)
 ✔ Connect to telegram bot @done(18-01-09 19:37)
 ☐ Variable notification cron for users
+☐ Notification upper cases "Login to telegram bot investhubbot to get notifications about you case"
+☐ Add /cancel when login telegram bot
 ✔ Allert to delete coin @done(18-01-10 01:37)
 ☐ If coin didn't registered in base => error
 ☐ Design

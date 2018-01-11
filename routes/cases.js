@@ -59,10 +59,11 @@ router.get('/edit/:id', ensureAuthenticated, (req, res) => {
 
 //Process Form
 router.post('/', ensureAuthenticated, (req, res) => {
-	let errors = [];
+	let errors = []
 	if (!req.body.symbol){
 		errors.push({text:'Please add symbol'})
 	}	
+	//If coin didn't found
 	if (!req.body.buy_price){
 		errors.push({text:'Please add buy price'})
 	}
@@ -103,7 +104,7 @@ router.put('/:id', ensureAuthenticated, (req, res) => {
 	})
 	.then(cases => {
 		//new valus
-		cases.symbol = req.body.symbol
+		//cases.symbol = req.body.symbol
 		cases.date_buy = req.body.date_buy
 		cases.buy_price = req.body.buy_price
 		cases.coins_count = req.body.coins_count

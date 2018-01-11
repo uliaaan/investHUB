@@ -65,7 +65,7 @@ app.use(function(req, res, next) {
 
 //Route
 app.get('', (req, res) => {
-	const title = 'Welcome'
+	const title = 'INVESTHUB'
 	res.render('index', {
 		title: title
 	})

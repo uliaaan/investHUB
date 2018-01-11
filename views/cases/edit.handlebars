@@ -5,22 +5,23 @@
 {{/each}}
 <div class="card card-body">
 	<h3>Edit coin</h3>
+	<hr>
 	<form action="/cases/{{case.id}}?_method=PUT" method="post">
 		<!-- <input type="hidden" name="_method" value="PUT"> -->
 		<div class="form-group">
 			<label for="symbol">Coin symbol</label>
-			<input type="text" class="form-control" name="symbol" value="{{case.symbol}}" required>
+			<h4>{{case.symbol}}</h4>
 		</div>
 		<div class="form-group">
-			<label for="date_buy">Date buy</label>
+			<label for="date_buy">Date buy<i class="text-danger">*</i></label>
 			<input type="date" class="form-control" name="date_buy" value="{{case.date_buy}}">
 		</div>
 		<div class="form-group">
-			<label for="buy_price">Buy price</label>
+			<label for="buy_price">Buy price<i class="text-danger">*</i></label>
 			<input type="text" class="form-control" name="buy_price" value="{{case.buy_price}}" required>
 		</div>
 		<div class="form-group">
-			<label for="coins_count">Coins count</label>
+			<label for="coins_count">Coins count<i class="text-danger">*</i></label>
 			<input type="text" class="form-control" name="coins_count" value="{{case.coins_count}}" required>
 		</div>
 		<div class="form-group">

@@ -16,7 +16,7 @@ const CaseSchema = new Schema({
 		required: true
 	},
 	date_buy: {
-		type: Date,
+		type: String,
 		default: Date.now
 	},
 	exchange: {

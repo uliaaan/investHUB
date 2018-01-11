@@ -1,12 +1,11 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 const {conversion} = require('./helpers/conversion')
-const TeaBot = require('teabot')('478122154:AAEd2WyhHmEzlzRkKSDTxWWhWvWWV72jA3Y', 'UliaaanTestBot')
+const TeaBot = require('teabot')('API', 'investhubbot')
 const TableTelegram = require('easy-table')
 
 /*  
-    Add 2 commands to Tbot
-    /login - for login
+    Add command to Tbot
     /info - get coins info
 */
 
