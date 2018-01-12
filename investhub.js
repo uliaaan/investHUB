@@ -100,7 +100,7 @@ setInterval(function() {
 			Coin.create(body)
 	})
 	console.log('Update base')
-}, 300000)
+}, 60000)
 
 const port = 5000
 
