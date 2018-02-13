@@ -19,8 +19,13 @@ const users = require('./routes/users')
 //Pasport config
 require('./config/passport')(passport)
 
+//DB config
+const db = require('./config/database')
+
 //Connect to mongoose
-mongoose.connect('mongodb://localhost/investinfo')
+mongoose.connect(db.mongoURI, {
+	useMongoClient: true
+})
 	.then(() => console.log('MongoDB connected...'))
 	.catch(err => console.log(err))
 
@@ -102,7 +107,7 @@ setInterval(function() {
 	console.log('Update base')
 }, 60000)
 
-const port = 5000
+const port = process.env.PORT || 5000
 
 app.listen(port, () => {
 	console.log(`Server start port ${port}`)
