@@ -22,6 +22,8 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "request": "^2.83.0",
-    "teabot": "^2.1.1"
+    "teabot": "^2.1.1",
+    "teabot-botan": "^1.0.1",
+    "tg-yarl": "^1.3.0"
   }
 }

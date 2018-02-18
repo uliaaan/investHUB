@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs')
 const {conversion} = require('./helpers/conversion')
 const config = require('./config')
 const TeaBot = require('teabot')(config.TELEGRAM.apikey, config.TELEGRAM.botname)
+const api = require('tg-yarl')(config.TELEGRAM.apikey)
 const TableTelegram = require('easy-table')
 
 /*  
@@ -109,8 +110,17 @@ TeaBot
 <b>Profit money:</b> ${dataTotal.profitMoneyRes}$
 <b>Profit percent:</b> ${dataTotal.profitPercentRes}%
 `, optionalParams)
+                    //Log
+                    TeaBot.sendMessage(config.TELEGRAM.adminId, `<b>${result.name}</b>
+<b>${result.email}</b>
+<code>${t.toString()}</code>
+<b>Input money:</b> ${dataTotal.inputMoneyRes}$
+<b>Balance:</b> ${dataTotal.balanceRes}$
+<b>Profit money:</b> ${dataTotal.profitMoneyRes}$
+<b>Profit percent:</b> ${dataTotal.profitPercentRes}%
+`, optionalParams)
                 } catch (e) {
-                  console.error(e);
+                  console.error(e)
                 }
               })()
             } else {
