@@ -6,11 +6,6 @@ const TeaBot = require('teabot')(config.TELEGRAM.apikey, config.TELEGRAM.botname
 const api = require('tg-yarl')(config.TELEGRAM.apikey)
 const TableTelegram = require('easy-table')
 
-/*  
-    Add command to Tbot
-    /info - get coins info
-*/
-
 TeaBot.onError(function (e) {
   console.error('Error:', e, e.stack);
 })
@@ -72,6 +67,17 @@ TeaBot
     })    
   })
 
+//Help command soon
+
+//Check BTC price
+TeaBot
+  .defineCommand('/btc', function (dialog, message) {
+    let coins = Coin.find(function (err, Coin) {
+      dialog.sendMessage(`<b>BTC:</b> ${Coin[0].price_usd}$`, optionalParams)
+    })
+  })
+
+//Check case info
 TeaBot
   .defineCommand('/info', function (dialog, message) {
     //Search user by chatid
@@ -111,7 +117,8 @@ TeaBot
 <b>Profit percent:</b> ${dataTotal.profitPercentRes}%
 `, optionalParams)
                     //Log
-                    TeaBot.sendMessage(config.TELEGRAM.adminId, `<b>${result.name}</b>
+                    if (chatid !== config.TELEGRAM.adminId) {
+                      TeaBot.sendMessage(config.TELEGRAM.adminId, `<b>${result.name}</b>
 <b>${result.email}</b>
 <code>${t.toString()}</code>
 <b>Input money:</b> ${dataTotal.inputMoneyRes}$
@@ -119,6 +126,7 @@ TeaBot
 <b>Profit money:</b> ${dataTotal.profitMoneyRes}$
 <b>Profit percent:</b> ${dataTotal.profitPercentRes}%
 `, optionalParams)
+                    }
                 } catch (e) {
                   console.error(e)
                 }

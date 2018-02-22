@@ -104,11 +104,11 @@ setInterval(function() {
 			//Add coins data
 			Coin.create(body)
 	})
-	console.log('Update base')
+	//console.log('Update base')
 }, 60000)
 
 const port = process.env.PORT || 5000
 
 app.listen(port, () => {
-	console.log(`Server start port ${port}`)
+	console.log(`Server investHUB start port ${port}`)
 })
