@@ -73,7 +73,11 @@ TeaBot
 TeaBot
   .defineCommand('/btc', function (dialog, message) {
     let coins = Coin.find(function (err, Coin) {
-      dialog.sendMessage(`<b>BTC:</b> ${Coin[0].price_usd}$`, optionalParams)
+      for (let i = 0; i < Coin.length; i++) {
+        if (Coin[i].symbol == 'BTC') {
+          dialog.sendMessage(`<b>BTC:</b> ${Coin[i].price_usd}$`, optionalParams)
+        }
+      }
     })
   })
 
