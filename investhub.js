@@ -70,9 +70,11 @@ app.use(function(req, res, next) {
 
 //Route
 app.get('', (req, res) => {
-	const title = 'INVESTHUB'
+	const title = 'INVESTHUB - CREATE YOUR OWN CRYPTOCURRENCY CASE'
+	const navbar = true
 	res.render('index', {
-		title: title
+		title: title,
+		navbar: navbar
 	})
 })
 

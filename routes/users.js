@@ -11,38 +11,47 @@ const User = mongoose.model('users')
 
 //User login route
 router.get('/login', (req, res) => {
-	res.render('users/login')
+	const title = 'Login - INVESTHUB'
+	res.render('users/login', {
+		title: title
+	})
 })
 
 //User register route
 router.get('/register', (req, res) => {
-	res.render('users/register')
+	const title = 'Register - INVESTHUB'
+	res.render('users/register', {
+		title: title
+	})
 })
 
 // Users Index Page
 router.get('/', ensureAuthenticated, (req, res) => {
+	const title = 'Profile - INVESTHUB'
   User.find()
     .then(users => {
       res.render('users/index', {
-        users:users
+				users:users,
+				title: title
       })
     })
 })
 
 
-//Edit case form
+//Edit user form
 router.get('/edit/:id', ensureAuthenticated, (req, res) => {
+	const title = 'Edit profile - INVESTHUB'
 	User.findOne({
 		_id: req.params.id
 	})
 		.then(user => {
-			console.log(user)
 			if(user._id != req.user.id){
 				req.flash('error_msg', 'Not Authorized')
 				res.redirect('/users')
 			} else {
 				res.render('users/edit', {
-					user:user
+					user:user,
+					title: title
 				})
 			}
 		})

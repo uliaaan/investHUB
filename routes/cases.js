@@ -14,6 +14,7 @@ const Coin = mongoose.model('coins')
 //Case index page
 router.get('/', ensureAuthenticated, (req, res) => {
 	let errors = []
+	const title = 'Case - INVESTHUB'
 	if (req.user.telegram == null){
 		errors.push({text:'Connect your Telegram account to get notifications @investhubbot'})
 	}
@@ -31,7 +32,8 @@ router.get('/', ensureAuthenticated, (req, res) => {
 					res.render('cases/index', {
 						errors: errors,
 						tableData: resultData[0].dataArr,
-						generalData: resultData[1].dataRes
+						generalData: resultData[1].dataRes,
+						title: title
 					}) 
 				}  catch (e) {
 					console.error(e);
@@ -40,13 +42,17 @@ router.get('/', ensureAuthenticated, (req, res) => {
 		})
 })
 
-//Add case form
+//Add coin form
 router.get('/add', ensureAuthenticated, (req, res) => {
-	res.render('cases/add')
+	const title = 'Add coin - INVESTHUB'
+	res.render('cases/add', {
+		title: title
+	})
 })
 
-//Edit case form
+//Edit coin form
 router.get('/edit/:id', ensureAuthenticated, (req, res) => {
+	const title = 'Edit coin - INVESTHUB'
 	Case.findOne({
 		_id: req.params.id
 	})
@@ -56,7 +62,8 @@ router.get('/edit/:id', ensureAuthenticated, (req, res) => {
 				res.redirect('/cases')
 			} else {
 				res.render('cases/edit', {
-					case:cases
+					case:cases,
+					title: title
 				})
 			}
 		})

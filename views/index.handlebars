@@ -1,5 +1,17 @@
-<div class="jumbotron text-center">
-	<h1 class="display-3">{{title}}</h1>
-	<p class="lead">Create your own cryptocase</p>
-	<a href="/cases/add" class="btn btn-dark btn-lg">Add coin</a>
 </div>
+<section class="intro-block">
+	<div class="container">
+		<div class="flexbox">
+			<div class="info text-center">
+				<h1>INVESTHUB</h1>
+				<h3>Create your own cryptocurrency case</h3>
+				{{#if user}}
+					<a href="/cases/add" class="btn btn-warning text-light">Get started</a>
+				{{else}}
+					<a href="/users/login" class="btn btn-warning text-light">Get started</a>
+				{{/if}}
+			</div>
+		</div>
+	</div>
+</section>
+<div class="container">
