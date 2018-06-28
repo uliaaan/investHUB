@@ -91,7 +91,7 @@ app.use('/users', users)
 require('./models/Coinmarketcup')
 const Coin = mongoose.model('coins')
 
-const url = 'https://api.coinmarketcap.com/v1/ticker/?limit=1000'
+const url = 'https://api.coinmarketcap.com/v1/ticker/?limit=100'
 
 
 //Get data from coinmarketcup to monog

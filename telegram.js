@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 const {conversion} = require('./helpers/conversion')
-const config = require('./config')
+const config = require('./config/database')
 const TeaBot = require('teabot')(config.TELEGRAM.apikey, config.TELEGRAM.botname)
 const api = require('tg-yarl')(config.TELEGRAM.apikey)
 const TableTelegram = require('easy-table')
